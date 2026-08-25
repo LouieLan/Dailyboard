@@ -26,6 +26,14 @@ toggleTema.className = "btn btn-theme";
 judulBaris.append(judul, toggleTema);
 app.appendChild(judulBaris);
 
+const barisTugasCatatan = document.createElement("div");
+barisTugasCatatan.className = "dashboard-row dashboard-row-primary";
+app.appendChild(barisTugasCatatan);
+
+const barisCuacaKutip = document.createElement("div");
+barisCuacaKutip.className = "dashboard-row dashboard-row-secondary";
+app.appendChild(barisCuacaKutip);
+
 const tugas = document.createElement("section");
 tugas.className = "panel panel-tugas";
 tugas.appendChild(document.createTextNode("Tugas"));
@@ -44,7 +52,7 @@ const daftarTugas = document.createElement("ul");
 daftarTugas.id = "daftug";
 daftarTugas.className = "todo-list";
 tugas.append(tombolTambah, inputTugas, cariTugas, daftarTugas);
-app.appendChild(tugas);
+barisTugasCatatan.appendChild(tugas);
 let filterAktif = "semua";
 
 function renderTugas() {
@@ -118,7 +126,7 @@ const daftarCatatan = document.createElement("div");
 daftarCatatan.id = "daftar-catatan";
 daftarCatatan.className = "note-list";
 catatan.append(formCatatan, daftarCatatan);
-app.appendChild(catatan);
+barisTugasCatatan.appendChild(catatan);
 
 function renderCatatan() {
     daftarCatatan.innerHTML = "";
@@ -168,7 +176,7 @@ const hasilCuaca = document.createElement("div");
 hasilCuaca.className = "cuaca-hasil";
 formCuaca.append(inputKota, tombolCuaca);
 cuaca.append(formCuaca, hasilCuaca);
-app.appendChild(cuaca);
+barisCuacaKutip.appendChild(cuaca);
 formCuaca.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!validasiInput(inputKota.value)) return;
@@ -189,7 +197,7 @@ tombolRefreshKutip.type = "button";
 tombolRefreshKutip.className = "btn btn-refresh-kutip";
 tombolRefreshKutip.textContent = "Refresh kutipan";
 kutipan.append(judulKutip, teksKutip, tombolRefreshKutip);
-app.appendChild(kutipan);
+barisCuacaKutip.appendChild(kutipan);
 async function tampilkanKutip() {
     teksKutip.textContent = "Memuat kutipan...";
     try { teksKutip.textContent = await ambilKutip(); }
@@ -200,7 +208,7 @@ tombolRefreshKutip.addEventListener("click", tampilkanKutip);
 const infoStatus = document.createElement("div");
 infoStatus.className = "info-status";
 infoStatus.textContent = "Memuat data...";
-app.insertBefore(infoStatus, tugas);
+app.insertBefore(infoStatus, barisTugasCatatan);
 const temaGelap = loadTheme();
 document.body.classList.toggle("dark-mode", temaGelap);
 toggleTema.textContent = temaGelap ? "Tema terang" : "Tema gelap";
@@ -211,4 +219,4 @@ toggleTema.addEventListener("click", () => {
 });
 Promise.all([tampilkanKutip(), ambilCuaca("Bandung", "3dcd75f92eb1bb27e7d2c952c3b9fd6b")])
     .then(() => { infoStatus.textContent = "Data berhasil dimuat"; })
-    .catch(() => { infoStatus.textContent = "Data gagal dimuat"; });
+    .catch(() => { infoStatus.textContent = "Data gagal dimuat"; });    

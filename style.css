@@ -38,6 +38,17 @@ header h1 {
     flex-direction: column;
     gap: 18px;
 }
+.dashboard-row {
+    display: grid;
+    gap: 18px;
+    align-items: stretch;
+}
+.dashboard-row-primary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.dashboard-row-secondary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .dashboard-title {
     margin: 0;
     font-size: clamp(1.4rem, 2vw, 2rem);
@@ -271,6 +282,11 @@ footer {
 
     .panel {
         padding: 16px;
+    }
+
+    .dashboard-row-primary,
+    .dashboard-row-secondary {
+        grid-template-columns: 1fr;
     }
 
     .tugas-item {
