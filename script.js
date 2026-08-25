@@ -36,7 +36,10 @@ app.appendChild(barisCuacaKutip);
 
 const tugas = document.createElement("section");
 tugas.className = "panel panel-tugas";
-tugas.appendChild(document.createTextNode("Tugas"));
+const judulTugas = document.createElement("h3");
+judulTugas.className = "panel-title";
+judulTugas.textContent = "Tugas";
+ tugas.appendChild(judulTugas);
 const tombolTambah = document.createElement("button");
 tombolTambah.type = "button";
 tombolTambah.className = "btn btn-primary";
@@ -51,7 +54,7 @@ cariTugas.placeholder = "Cari tugas...";
 const daftarTugas = document.createElement("ul");
 daftarTugas.id = "daftug";
 daftarTugas.className = "todo-list";
-tugas.append(tombolTambah, inputTugas, cariTugas, daftarTugas);
+tugas.append(inputTugas, tombolTambah, cariTugas, daftarTugas);
 barisTugasCatatan.appendChild(tugas);
 let filterAktif = "semua";
 
@@ -111,7 +114,10 @@ renderTugas();
 
 const catatan = document.createElement("section");
 catatan.className = "panel panel-catatan";
-catatan.appendChild(document.createTextNode("Catatan cepat"));
+const judulCatatan = document.createElement("h3");
+judulCatatan.className = "panel-title";
+judulCatatan.textContent = "Catatan cepat";
+catatan.appendChild(judulCatatan);
 const formCatatan = document.createElement("form");
 formCatatan.className = "note-form";
 const inputCatatan = document.createElement("textarea");
@@ -161,7 +167,10 @@ renderCatatan();
 
 const cuaca = document.createElement("section");
 cuaca.className = "panel panel-cuaca";
-cuaca.appendChild(document.createTextNode("Cuaca"));
+const judulCuaca = document.createElement("h3");
+judulCuaca.className = "panel-title";
+judulCuaca.textContent = "Cuaca";
+cuaca.appendChild(judulCuaca);
 const formCuaca = document.createElement("form");
 formCuaca.className = "form-cuaca";
 const inputKota = document.createElement("input");
